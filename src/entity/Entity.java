@@ -3,9 +3,10 @@ package entity;
 import com.sun.istack.internal.NotNull;
 
 /**
- * Created by Lee on 2017/4/5 0005.
+ * Created by Lee on 2017/4/9 0009.
  */
-public class User {
+
+public class Entity {
     private Integer id;
     @NotNull
     private String username;
@@ -34,8 +35,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User() {
     }
 }

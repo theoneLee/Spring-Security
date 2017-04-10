@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<sf:form commandName="user" method="post">
+<sf:form commandName="entity" method="post">
     username:<sf:input path="username"/><br>
     password:<sf:password path="password"/><br>
     <input id="remember_me" name="remember-me" type="checkbox"/>

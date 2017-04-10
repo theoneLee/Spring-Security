@@ -1,10 +1,8 @@
 package web;
 
-import entity.User;
+import entity.Entity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,7 +32,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String loginView(Model model){//在login.jsp里是使用spring提供的表单，开启了csrf功能
-        model.addAttribute(new User());
+        model.addAttribute(new Entity());
         return "login";
     }
 }

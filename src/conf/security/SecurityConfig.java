@@ -1,10 +1,13 @@
 package conf.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import root.dao.EntityRepository;
+import root.UserService;
 
 /**
  * Created by Lee on 2017/4/5 0005.
@@ -28,12 +31,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     }
 
+    @Autowired
+    EntityRepository entityRepository;//dao实例
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password("password").roles("USER")
+//                .and()
+//                .withUser("admin").password("password").roles("USER","ADMIN");
+        auth.userDetailsService( new UserService(entityRepository));
 
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER")
-                .and()
-                .withUser("admin").password("password").roles("USER","ADMIN");
+
     }
 }
